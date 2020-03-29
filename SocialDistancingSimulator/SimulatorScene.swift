@@ -73,7 +73,7 @@ class SimulatorScene: SKScene {
     }
 
     private func infectPatientZero() {
-        allPeople.randomElement()?.infect()
+        allPeople.randomElement()?.state = .infected
     }
 
     private func resetScene() {
@@ -148,7 +148,7 @@ extension SimulatorScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if let personOne = contact.bodyA.node as? PersonNode, let personTwo = contact.bodyB.node as? PersonNode {
             if isNewInfection(between: personOne, and: personTwo) {
-                (personOne.state == .healthy ? personOne : personTwo).infect()
+                (personOne.state == .healthy ? personOne : personTwo).state = .infected
                 simulatorDelegate?.simulatorScenePopulationStateUpdated(infected: numberOfInfected, healthy: numberOfHealthy, recovered: numberOfRecovered)
             }
             personOne.contactedAnotherPerson()

@@ -35,7 +35,18 @@ class PersonNode: SKSpriteNode {
 
     var recoveryTime = 14
     var recoveryHandler: (()->(Void))?
-    var state: Prognosis = .healthy
+    var state: Prognosis = .healthy {
+        didSet {
+            switch state {
+            case .infected:
+                infect()
+            case .recovered:
+                recover()
+            case .healthy:
+                break
+            }
+        }
+    }
 
     var isSocialDistancing = false {
         didSet {
@@ -75,7 +86,10 @@ class PersonNode: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?)
     {
         if keyPath == #keyPath(SKNode.parent) && self.scene != nil
         {
@@ -102,8 +116,12 @@ class PersonNode: SKSpriteNode {
     
     private func commitRandomVector() {
         currentVector = randomVector()
-        movementAction = SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x), y: CGFloat(currentVector.y), duration: 2.0))
-        run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x), y: CGFloat(currentVector.y), duration: 2.0)), withKey: "movement")
+        movementAction = SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
+                                                                y: CGFloat(currentVector.y),
+                                                                duration: 2.0))
+        run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
+                                                   y: CGFloat(currentVector.y),
+                                                   duration: 2.0)), withKey: "movement")
     }
 
     private func reverseVector() {
@@ -113,7 +131,9 @@ class PersonNode: SKSpriteNode {
         }
         removeAction(forKey: "movement")
         removeAction(forKey: "movementReverse")
-        run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x), y: CGFloat(currentVector.y), duration: 2.0)), withKey: "movementReverse")
+        run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
+                                                   y: CGFloat(currentVector.y),
+                                                   duration: 2.0)), withKey: "movementReverse")
     }
 
     // MARK: - Public Functions
@@ -128,22 +148,18 @@ class PersonNode: SKSpriteNode {
         reverseVector()
     }
     
-    func infect() {
-        state = .infected
+    private func infect() {
         color = .red
         run(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(recoveryTime)), SKAction.run({ [weak self] in
             guard let self = self else { return }
-            self.recover()
+            self.state = .recovered
             if let recover = self.recoveryHandler {
                 recover()
             }
         })]))
     }
 
-    // MARK: - Private Functions
-
     private func recover() {
-        state = .recovered
         color = .blue
     }
 
