@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  SocialDistancingSimulator
 //
-//  Created by ZuluAlpha on 3/23/20.
+//  Created by John Solsma on 3/23/20.
 //  Copyright © 2020 Solsma Dev Inc. All rights reserved.
 //
 
