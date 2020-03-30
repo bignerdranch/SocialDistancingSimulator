@@ -76,6 +76,7 @@ class PersonNode: SKSpriteNode {
         let pb = SKPhysicsBody(circleOfRadius: 6)
         pb.isDynamic = true
         pb.affectedByGravity = false
+        pb.usesPreciseCollisionDetection = true
         pb.categoryBitMask = ContactCategory.person
         pb.contactTestBitMask = ContactCategory.person | SimulatorScene.ContactCategory.walls
         pb.collisionBitMask = ContactCategory.person | SimulatorScene.ContactCategory.walls

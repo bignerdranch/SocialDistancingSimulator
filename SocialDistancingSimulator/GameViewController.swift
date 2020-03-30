@@ -148,7 +148,6 @@ extension GameViewController: SimulatorSceneDelegate {
     // MARK: - Simulator Scene Delegate
 
     func simulatorScenePopulationStateUpdated(infected: Int, healthy: Int, recovered: Int) {
-        print("healthy: \(healthy) infected: \(infected)")
         healthyLabel.text = "Healthy: \(healthy)"
         infectedLabel.text = "Infected: \(infected)"
         recoveredLabel.text = "Recovered: \(recovered)"

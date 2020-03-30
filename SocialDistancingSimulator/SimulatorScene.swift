@@ -38,13 +38,18 @@ class SimulatorScene: SKScene {
 
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
-        physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
-        physicsBody?.categoryBitMask = ContactCategory.walls
-        physicsBody?.collisionBitMask = PersonNode.ContactCategory.person
-        physicsBody?.contactTestBitMask = PersonNode.ContactCategory.person
+        physicsBody = buildPhysicsBody()
         backgroundColor = .white
         buildInitialGameState()
         isPaused = true
+    }
+
+    private func buildPhysicsBody() -> SKPhysicsBody {
+        let pb = SKPhysicsBody(edgeLoopFrom: self.frame)
+        pb.categoryBitMask = ContactCategory.walls
+        pb.collisionBitMask = PersonNode.ContactCategory.person
+        pb.contactTestBitMask = PersonNode.ContactCategory.person
+        return pb
     }
 
     private func buildInitialGameState() {
