@@ -12,11 +12,11 @@ protocol SimulatorSceneDelegate: class {
     func simulatorScenePopulationStateUpdated(infected: Int, healthy: Int, recovered: Int)
 }
 
-class SimulatorScene: SKScene {
+final class SimulatorScene: SKScene {
 
     // MARK: - Constants
 
-    enum Constants {
+    private enum Constants {
         static let startingXCoordinate = 340
         static let startingYCoordinate = 395
         static let numberOfRows = 18

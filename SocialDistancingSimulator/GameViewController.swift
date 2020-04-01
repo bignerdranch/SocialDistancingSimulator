@@ -20,11 +20,11 @@ protocol GameStateDelegate: class {
     func gameStateSimulationSpeedChanged(speed: Float)
 }
 
-class GameViewController: UIViewController {
+final class GameViewController: UIViewController {
 
     // MARK: - Constants
 
-    enum Constants {
+    private enum Constants {
         static let simulatorSceneSize = CGSize(width: 768, height: 802)
         static let sceneAnchorPoint = CGPoint(x: 0.5, y: 0.5)
         static let simulationSpeedSliderDefaultValue: Float = 1.0

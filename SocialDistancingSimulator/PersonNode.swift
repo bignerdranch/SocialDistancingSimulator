@@ -9,9 +9,11 @@
 import UIKit
 import SpriteKit
 
-class PersonNode: SKSpriteNode {
+final class PersonNode: SKSpriteNode {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
         static let nodeTexture = SKTexture(imageNamed: "node_ring")
         static let nodeScale: CGFloat = 0.05
     }
