@@ -106,7 +106,7 @@ class PersonNode: SKSpriteNode {
     // MARK: - Helpers
 
     private func randomVector() -> simd_double2 {
-        let randomNum = Double(Int.random(in: 0...100)) * (Bool.random() ? 1 : -1)
+        let randomNum = Double(Int.random(in: -100...100))
         let otherRandom = Double(100 - abs(randomNum)) * (Bool.random() ? 1 : -1)
         return  vector2(randomNum, otherRandom)
     }
