@@ -11,6 +11,11 @@ import SpriteKit
 
 class PersonNode: SKSpriteNode {
 
+    enum Constants {
+        static let nodeTexture = SKTexture(imageNamed: "node_ring")
+        static let nodeScale: CGFloat = 0.05
+    }
+
     // MARK: - Contact Category
 
     enum ContactCategory  {
@@ -60,18 +65,22 @@ class PersonNode: SKSpriteNode {
     // MARK: - Setup
 
     init() {
-        let texture = SKTexture(imageNamed: "node_ring")
-        super.init(texture: texture, color: SKColor.clear, size: texture.size())
-        setScale(0.05)
+        super.init(texture: Constants.nodeTexture,
+                   color: SKColor.clear,
+                   size: Constants.nodeTexture.size())
+        setScale(Constants.nodeScale)
         color = UIColor.green
         colorBlendFactor = 1.0
-        addObserver(self, forKeyPath: #keyPath(SKNode.parent), options: [.old, .new, .initial], context: nil)
+        addObserver(self,
+                    forKeyPath: #keyPath(SKNode.parent),
+                    options: [.old, .new, .initial],
+                    context: nil)
         physicsBody = buildPhysicsBody()
 
     }
 
     private func buildPhysicsBody() -> SKPhysicsBody {
-        let pb = SKPhysicsBody(circleOfRadius: 6)
+        let pb = SKPhysicsBody(circleOfRadius: 6.5)
         pb.isDynamic = true
         pb.affectedByGravity = false
         pb.usesPreciseCollisionDetection = true
@@ -96,7 +105,7 @@ class PersonNode: SKSpriteNode {
         }
     }
     
-    func didAttachToScene()
+    private func didAttachToScene()
     {
         commitRandomVector()
     }
