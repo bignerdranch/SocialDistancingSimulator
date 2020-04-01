@@ -28,8 +28,6 @@ class PersonNode: SKSpriteNode {
     // MARK: - Private Variables
 
     private var currentVector = vector2(0.0,0.0)
-    private var movementAction: SKAction?
-    private var recoveryTimer: Timer?
 
     // MARK: - Public Variables
 
@@ -117,9 +115,6 @@ class PersonNode: SKSpriteNode {
     
     private func commitRandomVector() {
         currentVector = randomVector()
-        movementAction = SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
-                                                                y: CGFloat(currentVector.y),
-                                                                duration: 2.0))
         run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
                                                    y: CGFloat(currentVector.y),
                                                    duration: 2.0)), withKey: "movement")
