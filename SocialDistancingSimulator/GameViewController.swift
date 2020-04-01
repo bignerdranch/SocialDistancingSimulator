@@ -22,6 +22,16 @@ protocol GameStateDelegate: class {
 
 class GameViewController: UIViewController {
 
+    // MARK: - Constants
+
+    enum Constants {
+        static let simulatorSceneSize = CGSize(width: 768, height: 802)
+        static let sceneAnchorPoint = CGPoint(x: 0.5, y: 0.5)
+        static let simulationSpeedSliderDefaultValue: Float = 1.0
+        static let socialDistancingSliderDefaultValue: Float = 0.0
+        static let recoverySliderDefaultValue: Float = 14.0
+    }
+
     // MARK: - Outlets
 
     @IBOutlet private var recoverySlider: UISlider!
@@ -42,6 +52,8 @@ class GameViewController: UIViewController {
 
     private var simulatorSceneIsPaused = true
 
+    // MARK: - Delegates
+
     public weak var socialDistancingDelegate: SocialDistancingDelegate?
     public weak var gameStateDelegate: GameStateDelegate?
 
@@ -50,16 +62,21 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         resetLabels()
-        if let scene = SimulatorScene(fileNamed: "SimulatorScene") {
-            socialDistancingDelegate = scene
-            gameStateDelegate = scene
-            scene.scaleMode = .aspectFit
-            scene.simulatorDelegate = self
-            sceneView.presentScene(scene)
-            sceneView.ignoresSiblingOrder = true
-            sceneView.showsFPS = true
-            sceneView.showsNodeCount = true
-        }
+        let scene = makeSimulatorScene()
+        socialDistancingDelegate = scene
+        gameStateDelegate = scene
+        sceneView.presentScene(scene)
+        sceneView.ignoresSiblingOrder = true
+        sceneView.showsFPS = true
+        sceneView.showsNodeCount = true
+    }
+
+    private func makeSimulatorScene() -> SimulatorScene {
+        let scene = SimulatorScene(size: Constants.simulatorSceneSize)
+        scene.anchorPoint = Constants.sceneAnchorPoint
+        scene.scaleMode = .aspectFit
+        scene.simulatorDelegate = self
+        return scene
     }
 
     override var shouldAutorotate: Bool {
@@ -81,15 +98,15 @@ class GameViewController: UIViewController {
     // MARK: - Private Functions
 
     private func resetSliders() {
-        simulationSpeedSlider.value = 1.0
-        socialDistancingSlider.value = 0.0
-        recoverySlider.value = 14.0
+        simulationSpeedSlider.value = Constants.simulationSpeedSliderDefaultValue
+        socialDistancingSlider.value = Constants.socialDistancingSliderDefaultValue
+        recoverySlider.value = Constants.recoverySliderDefaultValue
     }
 
     private func resetDelegates() {
-        socialDistancingDelegate?.socialDistancingPercentageChanged(percent: 0.0)
-        gameStateDelegate?.gameStateSimulationSpeedChanged(speed: 1.0)
-        socialDistancingDelegate?.socialDistancingRecoveryTimeChanged(timeInSeconds: 14)
+        socialDistancingDelegate?.socialDistancingPercentageChanged(percent: Constants.socialDistancingSliderDefaultValue)
+        gameStateDelegate?.gameStateSimulationSpeedChanged(speed: Constants.simulationSpeedSliderDefaultValue)
+        socialDistancingDelegate?.socialDistancingRecoveryTimeChanged(timeInSeconds: Int(Constants.recoverySliderDefaultValue))
     }
 
     private func resetLabels() {

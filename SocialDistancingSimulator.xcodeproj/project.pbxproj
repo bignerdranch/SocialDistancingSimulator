@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		318069542429A219006724D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318069532429A219006724D9 /* AppDelegate.swift */; };
-		318069562429A219006724D9 /* SimulatorScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 318069552429A219006724D9 /* SimulatorScene.sks */; };
 		3180695A2429A219006724D9 /* SimulatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318069592429A219006724D9 /* SimulatorScene.swift */; };
 		3180695C2429A219006724D9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180695B2429A219006724D9 /* GameViewController.swift */; };
 		3180695F2429A219006724D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3180695D2429A219006724D9 /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 /* Begin PBXFileReference section */
 		318069502429A219006724D9 /* SocialDistancingSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDistancingSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318069532429A219006724D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		318069552429A219006724D9 /* SimulatorScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SimulatorScene.sks; sourceTree = "<group>"; };
 		318069592429A219006724D9 /* SimulatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorScene.swift; sourceTree = "<group>"; };
 		3180695B2429A219006724D9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3180695E2429A219006724D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				318069532429A219006724D9 /* AppDelegate.swift */,
-				318069552429A219006724D9 /* SimulatorScene.sks */,
 				318069592429A219006724D9 /* SimulatorScene.swift */,
 				3180695B2429A219006724D9 /* GameViewController.swift */,
 				3180696B2429A7C4006724D9 /* PersonNode.swift */,
@@ -132,7 +129,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3180695F2429A219006724D9 /* Main.storyboard in Resources */,
-				318069562429A219006724D9 /* SimulatorScene.sks in Resources */,
 				318069612429A21B006724D9 /* Assets.xcassets in Resources */,
 				318069642429A21B006724D9 /* LaunchScreen.storyboard in Resources */,
 			);
