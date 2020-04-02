@@ -1,9 +1,9 @@
 //
-//  CovidGraphView.swift
-//  CovidGraph
+//  SimulatorGraphView.swift
+//  SocialDistancingSimulator
 //
 //  Created by Chris Morris on 3/23/20.
-//  Copyright © 2020 Chris Morris. All rights reserved.
+//  Copyright © 2020 John Solsma. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class SimulatorGraphView: UIView {
         }
     }
 
-    // MARK: - Public Variables
+    // MARK: - Public Functions
 
     func reset() {
         snapshots = []
@@ -45,14 +45,13 @@ class SimulatorGraphView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        
+
         let widthPerSnapshot = bounds.width / CGFloat(totalModeledTime)
-        
-        
+        let hairline = 1 / traitCollection.displayScale
         for (index, snapshot) in snapshots.enumerated() {
-            let recoveredRect = CGRect(x: CGFloat(index) * widthPerSnapshot,
+            let recoveredRect = CGRect(x: CGFloat(index) * widthPerSnapshot - hairline,
                                        y: 0,
-                                       width: widthPerSnapshot,
+                                       width: widthPerSnapshot + (2 * hairline),
                                        height: CGFloat(snapshot.recoveredPercentage) * bounds.height)
             let healthyRect = CGRect(x: recoveredRect.minX,
                                      y: recoveredRect.maxY,
@@ -62,13 +61,10 @@ class SimulatorGraphView: UIView {
                                   y: healthyRect.maxY,
                                   width: healthyRect.width,
                                   height: CGFloat(snapshot.sickPercentage) * bounds.height)
-            
             UIColor.blue.setFill()
             context.fill(recoveredRect)
-            
             Constants.graphBackgroundColor.setFill()
             context.fill(healthyRect)
-            
             UIColor.red.setFill()
             context.fill(sickRect)
         }
