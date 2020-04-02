@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Snapshot {
+struct GraphSnapshot {
+
     var healthyCount: Int
     var sickCount: Int
     var recoveredCount: Int
@@ -28,4 +29,5 @@ struct Snapshot {
     var recoveredPercentage: Double {
         Double(recoveredCount) / Double(populationCount)
     }
+    
 }

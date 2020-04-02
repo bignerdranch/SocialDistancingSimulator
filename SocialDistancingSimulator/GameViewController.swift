@@ -30,11 +30,12 @@ final class GameViewController: UIViewController {
         static let simulationSpeedSliderDefaultValue: Float = 1.0
         static let socialDistancingSliderDefaultValue: Float = 0.0
         static let recoverySliderDefaultValue: Float = 14.0
+        static let initialSnapShot = GraphSnapshot(healthyCount: 303, sickCount: 1, recoveredCount: 0)
     }
 
     // MARK: - Outlets
 
-    @IBOutlet weak var graphView: CovidGraphView!
+    @IBOutlet weak var graphView: SimulatorGraphView!
 
     @IBOutlet private var recoverySlider: UISlider!
     @IBOutlet private var simulationSpeedSlider: UISlider!
@@ -53,7 +54,7 @@ final class GameViewController: UIViewController {
     // MARK: - Private Variables
 
     private var simulatorSceneIsPaused = true
-    private var lastSnapshot = Snapshot(healthyCount: 303, sickCount: 1, recoveredCount: 0)
+    private var lastSnapshot = Constants.initialSnapShot
 
     // MARK: - Delegates
 
@@ -72,8 +73,6 @@ final class GameViewController: UIViewController {
         sceneView.ignoresSiblingOrder = true
         sceneView.showsFPS = true
         sceneView.showsNodeCount = true
-
-        //setupGraph()
     }
 
     private func makeSimulatorScene() -> SimulatorScene {
@@ -82,35 +81,6 @@ final class GameViewController: UIViewController {
         scene.scaleMode = .aspectFit
         scene.simulatorDelegate = self
         return scene
-    }
-
-    private func setupGraph() {
-        graphView.totalModeledTime = 608
-        lastSnapshot = Snapshot(healthyCount: 100, sickCount: 0, recoveredCount: 0)
-
-        graphView.snapshots.append(lastSnapshot)
-
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            if self.graphView.snapshots.count == self.graphView.totalModeledTime {
-                timer.invalidate()
-            }
-
-//            var nextSnapshot = self.lastSnapshot!
-//
-//            if nextSnapshot.sickCount > 0 {
-//                nextSnapshot.sickCount -= 1
-//                nextSnapshot.recoveredCount += 1
-//            }
-//
-//            if nextSnapshot.healthyCount > 2 {
-//                nextSnapshot.healthyCount -= 2
-//                nextSnapshot.sickCount += 2
-//            }
-
-            self.graphView.snapshots.append(self.lastSnapshot)
-
-            //print("Snapshot: \(nextSnapshot)")
-        }
     }
     
     override var shouldAutorotate: Bool {
@@ -203,7 +173,7 @@ extension GameViewController: SimulatorSceneDelegate {
         healthyLabel.text = "Healthy: \(healthy)"
         infectedLabel.text = "Infected: \(infected)"
         recoveredLabel.text = "Recovered: \(recovered)"
-        graphView.updateWith(snapshot: Snapshot(healthyCount: healthy, sickCount: infected, recoveredCount: recovered))
+        graphView.updateWith(snapshot: GraphSnapshot(healthyCount: healthy, sickCount: infected, recoveredCount: recovered))
     }
     
     

@@ -10,12 +10,12 @@ import UIKit
 
 class SimulatorGraphView: UIView {
 
-    var totalModeledTime: Int = 604 {
+    private var totalModeledTime: Int = 604 {
         didSet {
             setNeedsDisplay()
         }
     }
-    var snapshots: [Snapshot] = [] {
+    private var snapshots: [GraphSnapshot] = [] {
         didSet {
             setNeedsDisplay()
         }
@@ -25,7 +25,7 @@ class SimulatorGraphView: UIView {
         snapshots = []
     }
 
-    func updateWith(snapshot: Snapshot) {
+    func updateWith(snapshot: GraphSnapshot) {
         snapshots.append(snapshot)
     }
 

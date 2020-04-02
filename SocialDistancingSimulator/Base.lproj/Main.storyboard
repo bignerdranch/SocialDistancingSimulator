@@ -146,7 +146,7 @@
                                     <constraint firstItem="mpx-5m-Zih" firstAttribute="centerX" secondItem="TXW-bA-0sN" secondAttribute="centerX" id="pHx-Ko-WrB"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-TG-VlV" customClass="CovidGraphView" customModule="SocialDistancingSimulator" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-TG-VlV" customClass="SimulatorGraphView" customModule="SocialDistancingSimulator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="100" width="414" height="84"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
