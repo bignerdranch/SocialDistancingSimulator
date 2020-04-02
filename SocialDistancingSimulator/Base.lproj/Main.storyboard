@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nC5-JB-WgB" customClass="SKView">
-                                <rect key="frame" x="0.0" y="100" width="414" height="587"/>
+                                <rect key="frame" x="0.0" y="184" width="414" height="503"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3j-Iz-njP">
@@ -146,17 +146,27 @@
                                     <constraint firstItem="mpx-5m-Zih" firstAttribute="centerX" secondItem="TXW-bA-0sN" secondAttribute="centerX" id="pHx-Ko-WrB"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-TG-VlV" customClass="CovidGraphView" customModule="SocialDistancingSimulator" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="100" width="414" height="84"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="YOR-rL-b5k"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fMc-TG-VlV" firstAttribute="top" secondItem="m3j-Iz-njP" secondAttribute="bottom" id="0Ns-Jz-Lwz"/>
                             <constraint firstItem="Eks-KA-zvX" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="5" id="2dT-zl-ghn"/>
                             <constraint firstItem="nC5-JB-WgB" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="4si-AO-3Sz"/>
+                            <constraint firstItem="nC5-JB-WgB" firstAttribute="top" secondItem="fMc-TG-VlV" secondAttribute="bottom" id="8FB-hk-3U0"/>
+                            <constraint firstItem="fMc-TG-VlV" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="9ak-8L-lT4"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="TXW-bA-0sN" secondAttribute="trailing" id="H2R-Bi-U2I"/>
                             <constraint firstAttribute="top" secondItem="m3j-Iz-njP" secondAttribute="top" id="KIN-XV-T49"/>
-                            <constraint firstItem="nC5-JB-WgB" firstAttribute="top" secondItem="m3j-Iz-njP" secondAttribute="bottom" id="PZH-yD-uuF"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="nC5-JB-WgB" secondAttribute="trailing" id="R6a-sI-nb3"/>
                             <constraint firstItem="TXW-bA-0sN" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="Sa8-IF-M9d"/>
                             <constraint firstItem="TXW-bA-0sN" firstAttribute="top" secondItem="nC5-JB-WgB" secondAttribute="bottom" id="WXR-7s-lMp"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="fMc-TG-VlV" secondAttribute="trailing" id="kYn-l0-PGG"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="m3j-Iz-njP" secondAttribute="trailing" id="teK-AK-2Ax"/>
                             <constraint firstItem="m3j-Iz-njP" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="y1B-HL-y3h"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="TXW-bA-0sN" secondAttribute="bottom" id="yq3-Da-7pN"/>
@@ -164,6 +174,7 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
+                        <outlet property="graphView" destination="fMc-TG-VlV" id="kpo-rM-AQL"/>
                         <outlet property="healthyLabel" destination="cUi-CF-Uga" id="AYB-oD-a70"/>
                         <outlet property="infectedLabel" destination="pK3-nQ-ynO" id="4D0-nv-T5j"/>
                         <outlet property="recoveredLabel" destination="LXZ-XT-JVH" id="M9b-o4-gR9"/>
@@ -179,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.5" y="115.42968749999999"/>
+            <point key="canvasLocation" x="136.23188405797103" y="115.17857142857142"/>
         </scene>
     </scenes>
 </document>

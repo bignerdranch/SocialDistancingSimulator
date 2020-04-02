@@ -14,6 +14,8 @@
 		318069612429A21B006724D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318069602429A21B006724D9 /* Assets.xcassets */; };
 		318069642429A21B006724D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318069622429A21B006724D9 /* LaunchScreen.storyboard */; };
 		3180696C2429A7C4006724D9 /* PersonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180696B2429A7C4006724D9 /* PersonNode.swift */; };
+		A012F5EE24357C91004633F6 /* CovidGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A012F5ED24357C91004633F6 /* CovidGraphView.swift */; };
+		A012F5F224357CC8004633F6 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A012F5F124357CC8004633F6 /* Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		318069632429A21B006724D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		318069652429A21B006724D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3180696B2429A7C4006724D9 /* PersonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonNode.swift; sourceTree = "<group>"; };
+		A012F5ED24357C91004633F6 /* CovidGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CovidGraphView.swift; sourceTree = "<group>"; };
+		A012F5F124357CC8004633F6 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +66,22 @@
 				318069592429A219006724D9 /* SimulatorScene.swift */,
 				3180695B2429A219006724D9 /* GameViewController.swift */,
 				3180696B2429A7C4006724D9 /* PersonNode.swift */,
+				A012F5EC24357C76004633F6 /* SimulatorGraph */,
 				3180695D2429A219006724D9 /* Main.storyboard */,
 				318069602429A21B006724D9 /* Assets.xcassets */,
 				318069622429A21B006724D9 /* LaunchScreen.storyboard */,
 				318069652429A21B006724D9 /* Info.plist */,
 			);
 			path = SocialDistancingSimulator;
+			sourceTree = "<group>";
+		};
+		A012F5EC24357C76004633F6 /* SimulatorGraph */ = {
+			isa = PBXGroup;
+			children = (
+				A012F5ED24357C91004633F6 /* CovidGraphView.swift */,
+				A012F5F124357CC8004633F6 /* Snapshot.swift */,
+			);
+			path = SimulatorGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +157,8 @@
 			files = (
 				3180696C2429A7C4006724D9 /* PersonNode.swift in Sources */,
 				3180695A2429A219006724D9 /* SimulatorScene.swift in Sources */,
+				A012F5EE24357C91004633F6 /* CovidGraphView.swift in Sources */,
+				A012F5F224357CC8004633F6 /* Snapshot.swift in Sources */,
 				3180695C2429A219006724D9 /* GameViewController.swift in Sources */,
 				318069542429A219006724D9 /* AppDelegate.swift in Sources */,
 			);

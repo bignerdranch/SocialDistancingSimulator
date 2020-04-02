@@ -34,6 +34,8 @@ final class GameViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var graphView: CovidGraphView!
+
     @IBOutlet private var recoverySlider: UISlider!
     @IBOutlet private var simulationSpeedSlider: UISlider!
     @IBOutlet private var socialDistancingSlider: UISlider!
@@ -51,6 +53,7 @@ final class GameViewController: UIViewController {
     // MARK: - Private Variables
 
     private var simulatorSceneIsPaused = true
+    private var lastSnapshot = Snapshot(healthyCount: 303, sickCount: 1, recoveredCount: 0)
 
     // MARK: - Delegates
 
@@ -69,6 +72,8 @@ final class GameViewController: UIViewController {
         sceneView.ignoresSiblingOrder = true
         sceneView.showsFPS = true
         sceneView.showsNodeCount = true
+
+        //setupGraph()
     }
 
     private func makeSimulatorScene() -> SimulatorScene {
@@ -79,6 +84,35 @@ final class GameViewController: UIViewController {
         return scene
     }
 
+    private func setupGraph() {
+        graphView.totalModeledTime = 608
+        lastSnapshot = Snapshot(healthyCount: 100, sickCount: 0, recoveredCount: 0)
+
+        graphView.snapshots.append(lastSnapshot)
+
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            if self.graphView.snapshots.count == self.graphView.totalModeledTime {
+                timer.invalidate()
+            }
+
+//            var nextSnapshot = self.lastSnapshot!
+//
+//            if nextSnapshot.sickCount > 0 {
+//                nextSnapshot.sickCount -= 1
+//                nextSnapshot.recoveredCount += 1
+//            }
+//
+//            if nextSnapshot.healthyCount > 2 {
+//                nextSnapshot.healthyCount -= 2
+//                nextSnapshot.sickCount += 2
+//            }
+
+            self.graphView.snapshots.append(self.lastSnapshot)
+
+            //print("Snapshot: \(nextSnapshot)")
+        }
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -137,6 +171,7 @@ final class GameViewController: UIViewController {
         resetSliders()
         resetDelegates()
         resetLabels()
+        graphView.reset()
     }
 
     @IBAction func sliderValueChanged(_ sender: Any) {
@@ -168,6 +203,7 @@ extension GameViewController: SimulatorSceneDelegate {
         healthyLabel.text = "Healthy: \(healthy)"
         infectedLabel.text = "Infected: \(infected)"
         recoveredLabel.text = "Recovered: \(recovered)"
+        graphView.updateWith(snapshot: Snapshot(healthyCount: healthy, sickCount: infected, recoveredCount: recovered))
     }
     
     
