@@ -10,6 +10,8 @@ import UIKit
 
 class SimulatorGraphView: UIView {
 
+    // MARK: - Private Variables
+
     private var totalModeledTime: Int = 604 {
         didSet {
             setNeedsDisplay()
@@ -21,6 +23,8 @@ class SimulatorGraphView: UIView {
         }
     }
 
+    // MARK: - Public Variables
+
     func reset() {
         snapshots = []
     }
@@ -28,6 +32,8 @@ class SimulatorGraphView: UIView {
     func updateWith(snapshot: GraphSnapshot) {
         snapshots.append(snapshot)
     }
+
+    // MARK: - UIView / Graph Drawing
 
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
