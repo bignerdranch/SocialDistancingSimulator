@@ -10,6 +10,12 @@ import UIKit
 
 class SimulatorGraphView: UIView {
 
+    // MARK: - Constants
+
+    enum Constants {
+        static let graphBackgroundColor = UIColor(named: "graphBackgroundColor")!
+    }
+
     // MARK: - Private Variables
 
     private var totalModeledTime: Int = 604 {
@@ -60,7 +66,7 @@ class SimulatorGraphView: UIView {
             UIColor.blue.setFill()
             context.fill(recoveredRect)
             
-            UIColor.lightGray.setFill()
+            Constants.graphBackgroundColor.setFill()
             context.fill(healthyRect)
             
             UIColor.red.setFill()

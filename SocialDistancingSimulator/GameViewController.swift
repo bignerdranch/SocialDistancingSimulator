@@ -35,7 +35,7 @@ final class GameViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var graphView: SimulatorGraphView!
+    @IBOutlet private var graphView: SimulatorGraphView!
 
     @IBOutlet private var recoverySlider: UISlider!
     @IBOutlet private var simulationSpeedSlider: UISlider!
