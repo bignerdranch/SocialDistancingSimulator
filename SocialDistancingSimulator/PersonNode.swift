@@ -16,6 +16,9 @@ final class PersonNode: SKSpriteNode {
     private enum Constants {
         static let nodeTexture = SKTexture(imageNamed: "node_ring")
         static let nodeScale: CGFloat = 0.05
+        static let physicsBodyRadius: CGFloat = 6.5
+        static let movementKey = "movement"
+        static let movementReverseKey = "movementReverse"
     }
 
     // MARK: - Contact Category
@@ -56,8 +59,8 @@ final class PersonNode: SKSpriteNode {
     var isSocialDistancing = false {
         didSet {
             if isSocialDistancing {
-                removeAction(forKey: "movement")
-                removeAction(forKey: "movementReverse")
+                removeAction(forKey: Constants.movementKey)
+                removeAction(forKey: Constants.movementReverseKey)
             } else {
                 commitRandomVector()
             }
@@ -82,7 +85,7 @@ final class PersonNode: SKSpriteNode {
     }
 
     private func buildPhysicsBody() -> SKPhysicsBody {
-        let pb = SKPhysicsBody(circleOfRadius: 6.5)
+        let pb = SKPhysicsBody(circleOfRadius: Constants.physicsBodyRadius)
         pb.isDynamic = true
         pb.affectedByGravity = false
         pb.usesPreciseCollisionDetection = true
@@ -128,7 +131,7 @@ final class PersonNode: SKSpriteNode {
         currentVector = randomVector()
         run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
                                                    y: CGFloat(currentVector.y),
-                                                   duration: 2.0)), withKey: "movement")
+                                                   duration: 2.0)), withKey: Constants.movementReverseKey)
     }
 
     private func reverseVector() {
@@ -136,11 +139,11 @@ final class PersonNode: SKSpriteNode {
         if wildCardMovement() {
             currentVector = randomVector() // Or 12.5% of the time change to a random vector
         }
-        removeAction(forKey: "movement")
-        removeAction(forKey: "movementReverse")
+        removeAction(forKey: Constants.movementKey)
+        removeAction(forKey: Constants.movementReverseKey)
         run(SKAction.repeatForever(SKAction.moveBy(x: CGFloat(currentVector.x),
                                                    y: CGFloat(currentVector.y),
-                                                   duration: 2.0)), withKey: "movementReverse")
+                                                   duration: 2.0)), withKey: Constants.movementReverseKey)
     }
 
     // MARK: - Public Functions
