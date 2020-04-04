@@ -20,7 +20,7 @@ protocol GameStateDelegate: class {
     func gameStateSimulationSpeedChanged(speed: Float)
 }
 
-final class GameViewController: UIViewController {
+final class SimulatorViewController: UIViewController {
 
     // MARK: - Constants
 
@@ -165,7 +165,7 @@ final class GameViewController: UIViewController {
 
 }
 
-extension GameViewController: SimulatorSceneDelegate {
+extension SimulatorViewController: SimulatorSceneDelegate {
 
     // MARK: - Simulator Scene Delegate
 

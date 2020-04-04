@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		318069542429A219006724D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318069532429A219006724D9 /* AppDelegate.swift */; };
 		3180695A2429A219006724D9 /* SimulatorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318069592429A219006724D9 /* SimulatorScene.swift */; };
-		3180695C2429A219006724D9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180695B2429A219006724D9 /* GameViewController.swift */; };
+		3180695C2429A219006724D9 /* SimulatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3180695B2429A219006724D9 /* SimulatorViewController.swift */; };
 		3180695F2429A219006724D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3180695D2429A219006724D9 /* Main.storyboard */; };
 		318069612429A21B006724D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 318069602429A21B006724D9 /* Assets.xcassets */; };
 		318069642429A21B006724D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318069622429A21B006724D9 /* LaunchScreen.storyboard */; };
@@ -22,7 +22,7 @@
 		318069502429A219006724D9 /* SocialDistancingSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDistancingSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318069532429A219006724D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		318069592429A219006724D9 /* SimulatorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorScene.swift; sourceTree = "<group>"; };
-		3180695B2429A219006724D9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		3180695B2429A219006724D9 /* SimulatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorViewController.swift; sourceTree = "<group>"; };
 		3180695E2429A219006724D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		318069602429A21B006724D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		318069632429A21B006724D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			children = (
 				318069532429A219006724D9 /* AppDelegate.swift */,
 				318069592429A219006724D9 /* SimulatorScene.swift */,
-				3180695B2429A219006724D9 /* GameViewController.swift */,
+				3180695B2429A219006724D9 /* SimulatorViewController.swift */,
 				3180696B2429A7C4006724D9 /* PersonNode.swift */,
 				A012F5EC24357C76004633F6 /* SimulatorGraph */,
 				3180695D2429A219006724D9 /* Main.storyboard */,
@@ -159,7 +159,7 @@
 				3180695A2429A219006724D9 /* SimulatorScene.swift in Sources */,
 				A012F5EE24357C91004633F6 /* SimulatorGraphView.swift in Sources */,
 				A012F5F224357CC8004633F6 /* GraphSnapshot.swift in Sources */,
-				3180695C2429A219006724D9 /* GameViewController.swift in Sources */,
+				3180695C2429A219006724D9 /* SimulatorViewController.swift in Sources */,
 				318069542429A219006724D9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
