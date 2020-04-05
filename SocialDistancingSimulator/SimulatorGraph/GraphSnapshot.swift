@@ -1,6 +1,6 @@
 //
-//  Snapshot.swift
-//  CovidGraph
+//  GraphSnapshot.swift
+//  SocialDistancingSimulator
 //
 //  Created by Chris Morris on 3/23/20.
 //  Copyright © 2020 Chris Morris. All rights reserved.

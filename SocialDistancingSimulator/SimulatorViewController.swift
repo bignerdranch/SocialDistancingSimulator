@@ -1,5 +1,5 @@
 //
-//  GameViewController.swift
+//  SimulatorViewController.swift
 //  SocialDistancingSimulator
 //
 //  Created by John Solsma on 3/23/20.

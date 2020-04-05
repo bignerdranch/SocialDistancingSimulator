@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  SimulatorScene.swift
 //  SocialDistancingSimulator
 //
 //  Created by John Solsma on 3/23/20.
@@ -22,6 +22,7 @@ final class SimulatorScene: SKScene {
         static let numberOfRows = 18
         static let numberOfColumns = 15
         static let rowAndColumnPadding = 40
+        static let simulatorBackgroundColor = UIColor(named: "graphBackgroundColor")!
     }
 
     // MARK: - Contact Category
@@ -39,7 +40,7 @@ final class SimulatorScene: SKScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsBody = buildPhysicsBody()
-        backgroundColor = .white
+        backgroundColor = Constants.simulatorBackgroundColor
         buildInitialGameState()
         isPaused = true
     }
