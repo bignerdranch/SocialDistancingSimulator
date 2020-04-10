@@ -38,6 +38,18 @@ final class PersonNode: SKSpriteNode {
     // MARK: - Private Variables
 
     private var currentVector = vector2(0.0,0.0)
+    private var nodePath = CGMutablePath()
+    private var pathLine: SKShapeNode?
+
+    private var shouldDrawPath = false {
+        didSet {
+            if shouldDrawPath {
+                beginDrawingPath()
+            } else {
+                self.removeAction(forKey: "drawLine")
+            }
+        }
+    }
 
     // MARK: - Public Variables
 
@@ -134,6 +146,34 @@ final class PersonNode: SKSpriteNode {
                                                    duration: 2.0)), withKey: Constants.movementReverseKey)
     }
 
+    private func beginDrawingPath() {
+        let pathDrawingAction = SKAction.repeatForever(SKAction.sequence([SKAction.run { [weak self] in
+            guard let self = self else { return }
+            self.nodePath.move(to: self.position)
+            }, SKAction.wait(forDuration: 0.2), SKAction.run { [weak self] in
+                guard let self = self else { return }
+                self.nodePath.addLine(to: self.position)
+                if self.pathLine == nil {
+                    self.pathLine = self.pathLine(from: self.nodePath)
+                } else {
+                    self.pathLine?.removeFromParent()
+                    self.pathLine = self.pathLine(from: self.nodePath)
+                }
+                guard let path = self.pathLine else { return }
+                self.parent?.addChild(path)
+            }]))
+        run(pathDrawingAction, withKey: "drawLine")
+    }
+
+    private func pathLine(from path: CGMutablePath) -> SKShapeNode {
+        let line = SKShapeNode(path: path)
+        line.strokeColor = .red
+        line.fillColor = .red
+        line.lineWidth = 3
+        line.alpha = 0.5
+        return line
+    }
+
     private func reverseVector() {
         currentVector = vector2(currentVector.x * -1, currentVector.y * -1) // Reverse current vector
         if wildCardMovement() {
@@ -160,9 +200,11 @@ final class PersonNode: SKSpriteNode {
     
     private func infect() {
         color = .red
+        shouldDrawPath = true
         run(SKAction.sequence([SKAction.wait(forDuration: TimeInterval(recoveryTime)), SKAction.run({ [weak self] in
             guard let self = self else { return }
             self.state = .recovered
+            self.shouldDrawPath = false
             if let recover = self.recoveryHandler {
                 recover()
             }
