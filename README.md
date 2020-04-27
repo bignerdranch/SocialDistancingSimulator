@@ -9,7 +9,7 @@ Inspired by the Washington Post's ["Flatten the Curve" article](https://www.wash
 
 # Using Spritekit to Create Engagement and Turn Your Users Into Participants
 
-This simulator and it's inspirations are outlined in a blog post titled ["Using Spritekit to Create Engagement and Turn Your Users Into Participants."](https://www.bignerdranch.com/?p=4286&preview=1&_ppp=217e866520)
+This simulator and it's inspirations are outlined in a blog post titled ["Using Spritekit to Create Engagement and Turn Your Users Into Participants."](https://www.bignerdranch.com/blog/using-spritekit-to-create-engagement-and-turn-your-users-into-participants/)
 
 # Author
 
