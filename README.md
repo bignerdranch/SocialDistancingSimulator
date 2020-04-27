@@ -17,4 +17,4 @@ John Solsma (solsma@me.com, jsolsma@bignerdranch.com)
 
 # License
 
-SocialDistancingSimulator is available under the MIT license.
+SocialDistancingSimulator is available under the MIT license. See the LICENSE file for more info.
